@@ -29,7 +29,7 @@ twitter.stream('statuses/filter', {
         // Prevent non-sentiment from showing through
         if (tone.score === 0) return false;
 
-        // Add constraints for negativity
+        // Add constraints for extremes
         if (tone.score > 3) {
             tweet.sentiment = 3;
         } else if (tone.score < -3) {
