@@ -1,0 +1,43 @@
+{
+
+    "development" : {
+
+        "adapter"      : "[couch, mongo, or redis]",
+        "host"         : "[the-host]",
+        "dbname"       : "[the-dbname]",
+        "port"         : "[the-port]",
+
+        "auth"         : {
+            "username" : "[username]",
+            "password" : "[password]"
+        }
+    },
+
+    "production" : {
+
+        "adapter"      : "[couch, mongo, or redis]",
+        "host"         : "[the-host]",
+        "dbname"       : "[the-dbname]",
+        "port"         : "[the-port]",
+
+        "auth"         : {
+            "username" : "[username]",
+            "password" : "[password]"
+        }
+    },
+
+    "test" : {
+
+        "adapter"      : "[couch, mongo, or redis]",
+        "host"         : "[the-host]",
+        "dbname"       : "[the-dbname]",
+        "port"         : "[the-port]",
+
+        "auth"         : {
+            "username" : "[username]",
+            "password" : "[password]"
+        }
+    }
+
+}
+
