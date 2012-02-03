@@ -36,8 +36,8 @@ $(function() {
 
     var socket = io.connect('http://localhost');
 
-    socket.on('tweet', function (tweet) {
-
+    function addTweet(tweet) {
+        
         //Stores the tweet's location
         var position = new google.maps.LatLng( tweet.geo.coordinates[0], tweet.geo.coordinates[1]);
 
@@ -50,8 +50,6 @@ $(function() {
             description: tweet.text
         });
 
-        console.log(tweet);
-
         // Open the infowindow on click
         google.maps.event.addListener(marker, 'click', function() {
 
@@ -63,7 +61,8 @@ $(function() {
 
         });
 
-    });
+    }
 
+    socket.on("tweet", addTweet);
 
 });

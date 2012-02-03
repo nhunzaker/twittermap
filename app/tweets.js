@@ -14,15 +14,17 @@ var twitter = new ntwitter({
     access_token_secret: 'pR7CpeEtC3yBIof1c8lmVCoGDKMjLy1bTboIOIXVCKM'
 });
 
+var tweets = [];
 
 twitter.stream('statuses/filter', { 
 
-    tracking  : "obama",
-    locations :'-130.75,20.8, -60,50'
+    locations  : '-150,0, -60,90'
 
 }, function(stream) {
     
     stream.on('data', function (tweet) {
+
+        if (tweet.geo === null) return false;
 
         var tone = sentiment.analyze(tweet.text);
         
@@ -37,6 +39,8 @@ twitter.stream('statuses/filter', {
         } else {
             tweet.sentiment = tone.score;
         }
+
+        tweets.push(tweet);
 
         App.volley("tweet", tweet);
 
