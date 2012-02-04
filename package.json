@@ -1,4 +1,6 @@
 {
+
+  "name": "TelegraphApp",
   "author": "Nate Hunzaker <nate.hunzaker@gmail.com>",
 
   "dependencies": {
