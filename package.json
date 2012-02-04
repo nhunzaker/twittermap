@@ -5,8 +5,12 @@
 
   "version": "0.0.2",
   
+  "engines": {
+    "node": ">=v0.6.0"
+  },
+
   "dependencies": {
-    "telegraph"        : "0.8.0",
+    "telegraph"        : "0.8.01",
     "ntwitter"         : "0.2.10",
     "speakeasy-nlp"    : "0.1.42"
   }
