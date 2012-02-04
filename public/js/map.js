@@ -36,33 +36,41 @@ $(function() {
 
     var socket = io.connect('http://localhost');
 
-    function addTweet(tweet) {
-        
-        //Stores the tweet's location
-        var position = new google.maps.LatLng( tweet.geo.coordinates[0], tweet.geo.coordinates[1]);
 
-        //Creates the marker
-        var marker = new google.maps.Marker({													
-            position: position,
+    socket.on("tweet", function (tweet) {
+
+        var pos   = tweet.sentiment.positive.score,
+            neg   = tweet.sentiment.negative.score,
+            color = "rgb(" + (50 + (neg * 70)) + "," + (50 + (pos * 50)) + ", 50)";
+        
+        var position = new google.maps.LatLng( tweet.geo.coordinates[0], tweet.geo.coordinates[1]);
+            
+        var options = {
+            strokeColor: color,
+            strokeOpacity: 0.8,
+            strokeWeight: 1,
+            fillColor: color,
+            fillOpacity: 0.55,
             map: map,
-            title: tweet.from_user,
-            icon: '/images/' + (tweet.sentiment.toString()) + '.png',
-            description: tweet.text
-        });
+            center: position,
+            radius: 30000
+        };
+
+        //Stores the tweet's location
+        var circle = new google.maps.Circle(options);
 
         // Open the infowindow on click
-        google.maps.event.addListener(marker, 'click', function() {
+        google.maps.event.addListener(circle, 'click', function() {
 
             infowindow.content = "<img class='profile' src='" + tweet.user.profile_image_url + "'/>"
                 + "<p>" + tweet.text + "</p>"
                 + "<em>-" + tweet.user.name + "</em>";
             
-            infowindow.open(map, marker);
+            infowindow.open(map)
+            infowindow.setPosition(position);
 
         });
 
-    }
-
-    socket.on("tweet", addTweet);
+    });
 
 });
