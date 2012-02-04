@@ -4,7 +4,7 @@
   "name": "TelegraphApp",
 
   "scripts": { 
-    "start": "./server" 
+    "start": "./server.js" 
   },
 
   "version": "0.0.2",
