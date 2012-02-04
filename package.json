@@ -4,6 +4,8 @@
   "author": "Nate Hunzaker <nate.hunzaker@gmail.com>",
 
   "version": "v0.6.*",
+
+  "scripts": { "start": "./server.js" }
   
   "dependencies": {
     "telegraph"        : "0.8.04",
