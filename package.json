@@ -3,7 +3,7 @@
   "name": "TelegraphApp",
   "author": "Nate Hunzaker <nate.hunzaker@gmail.com>",
 
-  "version": "latest",
+  "version": "v0.6.0",
   
   "dependencies": {
     "telegraph"        : "0.8.04",
