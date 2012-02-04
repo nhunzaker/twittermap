@@ -47,7 +47,7 @@ $(function() {
             
         var options = {
             strokeColor: color,
-            strokeOpacity: 0.8,
+            strokeOpacity: 1,
             strokeWeight: 1,
             fillColor: color,
             fillOpacity: 0.55,
