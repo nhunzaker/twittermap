@@ -6,7 +6,7 @@
   "version": "0.0.1",
   
   "dependencies": {
-    "telegraph"        : "0.7.83",
+    "telegraph"        : "0.8.0",
     "speakeasy-nlp"    : "0.1.42"
   }
 

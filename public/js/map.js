@@ -7,6 +7,11 @@ $(function() {
 
     var styles = [{featureType:"administrative",elementType:"labels",stylers:[{visibility:"off"}]},{featureType:"landscape.natural",stylers:[{hue:"#0000ff"},{lightness:-84},{visibility:"off"}]},{featureType:"water",stylers:[{visibility:"on"},{saturation:-61},{lightness:-63}]},{featureType:"poi",stylers:[{visibility:"off"}]},{featureType:"road",stylers:[{visibility:"off"}]},{featureType:"administrative",elementType:"labels",stylers:[{visibility:"off"}]},{featureType:"landscape",stylers:[{visibility:"off"}]},{featureType:"administrative",stylers:[{visibility:"off"}]},{},{}];
 
+    function grow (max) {
+        this.radius += 1000;
+        if (this.radius > max) grow.apply(this, [max]);
+    }
+
 
     //-- Views --------------------------------------------------------------------//
 
@@ -14,7 +19,6 @@ $(function() {
     $("#map_canvas").height($(window).height() - $("header").height());
     
     var myOptions = {
-
         zoom: 5,
         center: new google.maps.LatLng(35.5, -100),
         mapTypeControl: false,
@@ -24,7 +28,6 @@ $(function() {
         mapTypeId: google.maps.MapTypeId.ROADMAP,
         streetViewControl: false,
         styles: styles
-        
     };
     
     var map = new google.maps.Map(document.getElementById('map_canvas'), myOptions),
@@ -33,9 +36,8 @@ $(function() {
         });
 
     //-- Initialize ---------------------------------------------------------------//
-
-    var socket = io.connect('http://localhost');
-
+    var connect = window.location.protocol + "//" + window.location.hostname,
+        socket  = io.connect(connect);
 
     socket.on("tweet", function (tweet) {
 
@@ -44,7 +46,7 @@ $(function() {
             color = "rgb(" + (50 + (neg * 70)) + "," + (50 + (pos * 50)) + ", 50)";
         
         var position = new google.maps.LatLng( tweet.geo.coordinates[0], tweet.geo.coordinates[1]);
-            
+        
         var options = {
             strokeColor: color,
             strokeOpacity: 1,
@@ -66,7 +68,7 @@ $(function() {
                 + "<p>" + tweet.text + "</p>"
                 + "<em>-" + tweet.user.name + "</em>";
             
-            infowindow.open(map)
+            infowindow.open(map);
             infowindow.setPosition(position);
 
         });
