@@ -7,6 +7,7 @@
   
   "dependencies": {
     "telegraph"        : "0.8.0",
+    "ntwitter"         : "0.2.10"
     "speakeasy-nlp"    : "0.1.42"
   }
 
