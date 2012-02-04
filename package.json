@@ -4,7 +4,7 @@
   "name": "TelegraphApp",
 
   "dependencies": {
-    "telegraph"        : "0.8.03",
+    "telegraph"        : "0.8.04",
     "ntwitter"         : "0.2.10",
     "speakeasy-nlp"    : "0.1.42"
   },
