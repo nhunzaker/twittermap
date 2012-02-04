@@ -1,16 +1,14 @@
 {
-
-  "name": "TelegraphApp",
+  "name": "Twittermap",
   "author": "Nate Hunzaker <nate.hunzaker@gmail.com>",
-
-  "version": "v0.4.7",
-
-  "scripts": { "start": "./server.js" },
-  
+  "version": "0.6.5",
+  "scripts": {
+    "start": "server.js"
+  },
   "dependencies": {
-    "telegraph"        : "0.8.04",
-    "ntwitter"         : "0.2.10",
-    "speakeasy-nlp"    : "0.1.42"
-  }
-
+    "telegraph": "0.8.06",
+    "ntwitter": "0.2.10",
+    "speakeasy-nlp": "0.1.42"
+  },
+  "subdomain": "twittermap"
 }
