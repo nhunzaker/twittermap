@@ -1,0 +1,34 @@
+info it worked if it ends with ok
+verbose cli [ 'node',
+verbose cli   '/usr/local/bin/npm',
+verbose cli   'owner',
+verbose cli   'ls',
+verbose cli   'TelegraphApp' ]
+info using npm@1.0.27
+info using node@v0.4.11
+verbose config file /Users/nate/.npmrc
+verbose config file /Users/nate/.nvm/v0.4.11/etc/npmrc
+verbose GET TelegraphApp
+verbose raw, before any munging TelegraphApp
+verbose url resolving [ 'https://registry.npmjs.org/', './TelegraphApp' ]
+verbose url resolved https://registry.npmjs.org/TelegraphApp
+verbose url parsed { protocol: 'https:',
+verbose url parsed   slashes: true,
+verbose url parsed   host: 'registry.npmjs.org',
+verbose url parsed   hostname: 'registry.npmjs.org',
+verbose url parsed   href: 'https://registry.npmjs.org/TelegraphApp',
+verbose url parsed   pathname: '/TelegraphApp' }
+verbose response https://registry.npmjs.org/TelegraphApp
+silly chunk {"error":"not_found","reason":"document not found"}
+silly chunk 
+ERR! Couldn't get owner data for TelegraphApp
+ERR! 404 'TelegraphApp' is not in the npm registry.
+ERR! 404 You should bug the author to publish it.
+ERR! 404 Note that you can also install from a tarball or folder.
+ERR! 
+ERR! System Darwin 11.2.0
+ERR! command "node" "/usr/local/bin/npm" "owner" "ls" "TelegraphApp"
+ERR! cwd /Users/nate/Sites/nlp
+ERR! node -v v0.4.11
+ERR! npm -v 1.0.27
+verbose exit [ 1, true ]
