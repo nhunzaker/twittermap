@@ -3,14 +3,14 @@
 
   "name": "TelegraphApp",
 
-  "scripts": { 
-    "start": "./server.js" 
-  },
-
   "dependencies": {
     "telegraph"        : "0.8.03",
     "ntwitter"         : "0.2.10",
     "speakeasy-nlp"    : "0.1.42"
+  },
+
+  "scripts": { 
+    "start": "./server.js" 
   }
 
 }
