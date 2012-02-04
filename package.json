@@ -7,8 +7,6 @@
     "start": "./server.js" 
   },
 
-  "version": "v0.4.11",
-
   "dependencies": {
     "telegraph"        : "0.8.03",
     "ntwitter"         : "0.2.10",
