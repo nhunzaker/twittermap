@@ -1,3 +1,7 @@
-# Readme File
+# Twittermap
 
-Place important documentation and other information here.
+```
+npm install -d
+node server
+```
+
