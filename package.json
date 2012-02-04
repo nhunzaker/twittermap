@@ -3,11 +3,11 @@
 
   "name": "TelegraphApp",
 
-  "version": "0.0.2",
-  
-  "engines": {
-    "node": ">=v0.6.0"
+  "scripts": { 
+    "start": "./server" 
   },
+
+  "version": "0.0.2",
 
   "dependencies": {
     "telegraph"        : "0.8.03",
