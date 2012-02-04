@@ -9,10 +9,6 @@
     "speakeasy-nlp"    : "0.1.42"
   },
 
-  "version": "v0.4.11",
-
-  "scripts": { 
-    "start": "./server.js" 
-  }
+  "version": "v0.4.11"
 
 }
