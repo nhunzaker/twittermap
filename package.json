@@ -3,14 +3,12 @@
   "name": "TelegraphApp",
   "author": "Nate Hunzaker <nate.hunzaker@gmail.com>",
 
-  "version": "latest"
+  "version": "latest",
   
   "dependencies": {
     "telegraph"        : "0.8.04",
     "ntwitter"         : "0.2.10",
     "speakeasy-nlp"    : "0.1.42"
-  },
-
-  
+  }
 
 }
