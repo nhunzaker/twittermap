@@ -1,6 +1,6 @@
 // Authentication
 // -------------------------------------------------- //
-
+/*
 var twitter_key = App.twitter_key,
     OAuth = require('oauth').OAuth;
 
@@ -52,3 +52,4 @@ App.get('/auth/twitter/callback', function(req, res, next) {
 		});
     
 });
+*/

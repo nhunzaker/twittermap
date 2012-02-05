@@ -2,9 +2,7 @@
 // -------------------------------------------------- //
 
 var ntwitter  = require("ntwitter"),
-    sentiment = require("speakeasy-nlp").sentiment,
-    request   = require("request");
-
+    sentiment = require("speakeasy-nlp").sentiment;
 
 // The Twitter API
 // -------------------------------------------------- //
