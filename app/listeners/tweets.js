@@ -20,7 +20,7 @@ twitter.stream('statuses/filter', {
         tweet.type = "tweet";
 
         App.volley("tweet", tweet);
-        Tweet.save(tweet, function(err, doc) {});
+//        Tweet.save(tweet, function(err, doc) {});
 
     }); 
 
