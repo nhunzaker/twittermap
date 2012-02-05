@@ -19,9 +19,8 @@ twitter.stream('statuses/filter', {
         tweet.sentiment = sentiment.analyze(tweet.text);
         tweet.type = "tweet";
 
-        Tweet.save(tweet, function(err, doc) {  
-            App.volley("tweet", tweet);
-        });
+        App.volley("tweet", tweet);
+        Tweet.save(tweet, function(err, doc) {});
 
     }); 
 
