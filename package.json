@@ -6,7 +6,7 @@
     "start": "server.js"
   },
   "dependencies": {
-    "telegraph": "0.8.14",
+    "telegraph": "0.8.15",
     "ntwitter": "0.2.10",
     "speakeasy-nlp": "0.1.42",
     "oauth": "0.9.x"
