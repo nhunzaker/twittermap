@@ -1,5 +1,8 @@
 # Twittermap
 
+1. Setup your twitter dev account settings and couchdb settings in `./config`
+2. Do the following:
+
 ```
 npm install -d
 node server
