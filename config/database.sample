@@ -2,28 +2,28 @@
 
   "development" : {
 
-    "adapter"      : "couch",
-    "host"         : "telegraph.iriscouch.com",
-    "dbname"       : "twittermap",
-    "port"         : "80",
+    "adapter"      : "[couch]",
+    "host"         : "[the-host]",
+    "dbname"       : "[the-dbname]",
+    "port"         : "[the-port]",
 
     "auth"         : {
-      "username" : "nhunzaker",
-      "password" : "f0rtress"
+      "username" : "[username]",
+      "password" : "[password]"
     }
 
   },
 
   "production" : {
 
-    "adapter"      : "couch",
-    "host"         : "telegraph.iriscouch.com",
-    "dbname"       : "twittermap",
-    "port"         : "80",
+    "adapter"      : "[couch]",
+    "host"         : "[the-host]",
+    "dbname"       : "[the-dbname]",
+    "port"         : "[the-port]",
 
     "auth"         : {
-      "username" : "nhunzaker",
-      "password" : "f0rtress"
+      "username" : "[username]",
+      "password" : "[password]"
     }
   },
 
