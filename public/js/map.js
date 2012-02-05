@@ -36,14 +36,9 @@ $(function() {
         }),
         circles = [];
     
-    google.maps.event.addListener(map, 'zoom_changed', function() {
-        $.each(circles, function() {
-            this.setRadius((1 + (map.zoom / 21)) * 10000);
-        });
-    });
-    
 
     //-- Initialize ---------------------------------------------------------------//
+   
     var connect = window.location.protocol + "//" + window.location.hostname,
         socket  = io.connect(connect);
 
@@ -63,7 +58,7 @@ $(function() {
             fillOpacity: 0.55,
             map: map,
             center: position,
-            radius: (1 + (map.zoom / 21) * 10000)
+            radius: 30000
         };
 
         //Stores the tweet's location

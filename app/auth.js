@@ -1,23 +1,54 @@
 // Authentication
 // -------------------------------------------------- //
 
-var twitter_key = App.twitter_key;
+var twitter_key = App.twitter_key,
+    OAuth = require('oauth').OAuth;
 
-App.on("get:auth/twitter", function(req, res) {
+var oa = new OAuth(
+	  "https://api.twitter.com/oauth/request_token",
+	  "https://api.twitter.com/oauth/access_token",
+	  twitter_key.consumer_key,
+	  twitter_key.consumer_secret,
+	  "1.0",
+	  twitter_key.callback_url,
+	  "HMAC-SHA1"
+);
 
-    everyauth.twitter
-        .consumerKey(twitter_key.consumer_key)
-        .consumerSecret(twitter_key.consumer_secret)
-        .findOrCreateUser( function (sess, accessToken, accessSecret, twitUser) {
-            App.emit("twitterauth", twitUser.id);
-        })
-        .redirectPath('/');
+App.get("/auth/twitter", function(req, res) {
+
+    oa.getOAuthRequestToken(function(error, oauth_token, oauth_token_secret, results){
+
+		    if (error) return res.redirect("/");
+        
+			  req.session.oauth = {};
+			  req.session.oauth.token = oauth_token;
+			  req.session.oauth.token_secret = oauth_token_secret;
+			  res.redirect('https://twitter.com/oauth/authenticate?oauth_token=' + oauth_token);
+
+	  });
 
 });
 
+App.get('/auth/twitter/callback', function(req, res, next) {
 
-// The event registration for when we can start tracking
-// -------------------------------------------------- //
-App.on("twitterauth", function(user) {
-    console.log(user);
+	  if (!req.session.oauth) next(new Error("you're not supposed to be here."));
+
+		req.session.oauth.verifier = req.query.oauth_verifier;
+
+		var oauth = req.session.oauth;
+    
+		oa.getOAuthAccessToken(oauth.token, oauth.token_secret, oauth.verifier, function(error, token, secret, results){
+			  if (error)  return res.send("yeah something broke.");
+				
+        req.session.oauth.access_token = token;
+				req.session.oauth.access_token_secret = secret;
+
+        req.session.user = results;
+
+				res.redirect("/");
+        
+        App.emit("authenticated", req.session.oauth);
+
+		});
+    
 });

@@ -1,19 +1,10 @@
-require("telegraph");
+require("../telegraph/lib/telegraph");
 
 App = new Telegraph({
-    "appname"    :  "Twittermap",
-    "websockets" : true
+    "appname"    : "Twittermap",
+    "websockets" : true,
+    "session"    : "twittermap"
 });
-
-// Configure server
-// -------------------------------------------------- //
-
-App.use("bodyParser")
-    .use("cookieParser")
-    .use("session", { secret: 'mr ripley' });
-
-// Initialize
-// -------------------------------------------------- //
 
 var port = process.env.PORT || 3000;
 

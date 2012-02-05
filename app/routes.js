@@ -1,4 +1,3 @@
-
-App.on("get:index", function(req, res) {
-    res.render("index");
+App.get("/", function(req, res) {
+    res.render("index", { user : req.session.user });
 });
