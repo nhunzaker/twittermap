@@ -1,4 +1,4 @@
-require("../telegraph/lib/telegraph");
+require("telegraph");
 
 App = new Telegraph({
     "appname"    : "Twittermap",
