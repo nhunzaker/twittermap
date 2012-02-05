@@ -1,12 +1,12 @@
 {
   "name": "Twittermap",
   "author": "Nate Hunzaker <nate.hunzaker@gmail.com>",
-  "version": "0.6.51",
+  "version": "0.1.0",
   "scripts": {
     "start": "server.js"
   },
   "dependencies": {
-    "telegraph": "0.8.13",
+    "telegraph": "0.8.14",
     "ntwitter": "0.2.10",
     "speakeasy-nlp": "0.1.42",
     "oauth": "0.9.x"
