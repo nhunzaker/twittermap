@@ -1,7 +1,7 @@
 {
   "name": "Twittermap",
   "author": "Nate Hunzaker <nate.hunzaker@gmail.com>",
-  "version": "0.6.5-3",
+  "version": "0.6.5-4",
   "scripts": {
     "start": "server.js"
   },
@@ -9,8 +9,7 @@
     "telegraph": "0.8.13",
     "ntwitter": "0.2.10",
     "speakeasy-nlp": "0.1.42",
-    "oauth": "0.9.x",
-    "request": "2.9.x"
+    "oauth": "0.9.x"
   },
   "subdomain": "twittermap"
 }
