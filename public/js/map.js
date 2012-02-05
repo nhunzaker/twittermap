@@ -33,7 +33,15 @@ $(function() {
     var map = new google.maps.Map(document.getElementById('map_canvas'), myOptions),
         infowindow = new google.maps.InfoWindow({
             content: ""
+        }),
+        circles = [];
+    
+    google.maps.event.addListener(map, 'zoom_changed', function() {
+        $.each(circles, function() {
+            this.setRadius((1 + (map.zoom / 21)) * 10000);
         });
+    });
+    
 
     //-- Initialize ---------------------------------------------------------------//
     var connect = window.location.protocol + "//" + window.location.hostname,
@@ -55,11 +63,13 @@ $(function() {
             fillOpacity: 0.55,
             map: map,
             center: position,
-            radius: 30000
+            radius: (1 + (map.zoom / 21) * 10000)
         };
 
         //Stores the tweet's location
         var circle = new google.maps.Circle(options);
+
+        circles.push(circle);
 
         // Open the infowindow on click
         google.maps.event.addListener(circle, 'click', function() {

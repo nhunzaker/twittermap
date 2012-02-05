@@ -6,8 +6,7 @@ var ntwitter  = require("ntwitter"),
 
 // The Twitter API
 // -------------------------------------------------- //
-
-var twitter = new ntwitter(require("../config/twitter"));
+var twitter = new ntwitter(App.twitter_key);
 
 twitter.stream('statuses/filter', { 
 
