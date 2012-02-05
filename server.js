@@ -2,8 +2,7 @@ require("telegraph");
 
 App = new Telegraph({
     "appname"    : "Twittermap",
-    "websockets" : true,
-    "session"    : "twittermap"
+    "websockets" : true
 });
 
 var port = process.env.PORT || 3000;
