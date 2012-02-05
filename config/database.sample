@@ -1,0 +1,42 @@
+{
+
+  "development" : {
+
+    "adapter"      : "couch",
+    "host"         : "telegraph.iriscouch.com",
+    "dbname"       : "twittermap",
+    "port"         : "80",
+
+    "auth"         : {
+      "username" : "nhunzaker",
+      "password" : "f0rtress"
+    }
+
+  },
+
+  "production" : {
+
+    "adapter"      : "couch",
+    "host"         : "telegraph.iriscouch.com",
+    "dbname"       : "twittermap",
+    "port"         : "80",
+
+    "auth"         : {
+      "username" : "nhunzaker",
+      "password" : "f0rtress"
+    }
+  },
+
+  "test" : {
+
+    "adapter"      : "[couch]",
+    "host"         : "[the-host]",
+    "dbname"       : "[the-dbname]",
+    "port"         : "[the-port]",
+
+    "auth"         : {
+      "username" : "[username]",
+      "password" : "[password]"
+    }
+  }
+}

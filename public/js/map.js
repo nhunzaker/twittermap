@@ -81,9 +81,7 @@ $(function() {
         });
     }
 
-    socket.on("tweet", function (tweet) {
-
-        console.log("Tweet tweet");
+    function clearingHouse(tweet) {
         
         if (tweet.geo) {
             plotTweet(tweet);
@@ -98,6 +96,21 @@ $(function() {
                 }
             });
 
+        } else {
+            console.log(tweet);
+        }
+
+    }
+
+    socket.on("tweet", function (data) {
+        
+        if ($.isArray(data)) {
+            console.log("got data");
+            $.each(data, function() {
+                clearingHouse(this);
+            });
+        } else {
+            clearingHouse(data);
         }
 
     });
