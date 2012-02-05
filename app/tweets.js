@@ -11,8 +11,8 @@ var twitter = new ntwitter(App.twitter_key);
 
 twitter.stream('statuses/filter', { 
 
-    locations  : '-150,0, -60,90'
-    //track: "superbowl"
+    //locations  : '-150,0, -60,90'
+    track: "superbowl"
 
 }, function(stream) {
 
@@ -38,4 +38,5 @@ App.on("authenticated", function(creds) {
     t.verifyCredentials(function (err, data) {
         console.log(data);
     });
+
 });

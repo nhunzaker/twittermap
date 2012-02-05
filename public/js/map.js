@@ -40,14 +40,15 @@ $(function() {
     //-- Initialize ---------------------------------------------------------------//
    
     var connect = window.location.protocol + "//" + window.location.hostname,
-        socket  = io.connect(connect);
+        socket  = io.connect(connect),
+        geocoder = new google.maps.Geocoder();
 
-    socket.on("tweet", function (tweet) {
+    function plotTweet (tweet) {
 
         var pos   = tweet.sentiment.positive.score,
             neg   = tweet.sentiment.negative.score,
             color = "rgb(" + (50 + (neg * 70)) + "," + (50 + (pos * 50)) + ", 50)";
-        
+
         var position = new google.maps.LatLng( tweet.geo.coordinates[0], tweet.geo.coordinates[1]);
         
         var options = {
@@ -71,12 +72,33 @@ $(function() {
 
             infowindow.content = "<img class='profile' src='" + tweet.user.profile_image_url + "'/>"
                 + "<p>" + tweet.text + "</p>"
-                + "<em>-" + tweet.user.name + "</em>";
+                + "<em>-" + tweet.user.name + " | " + tweet.user.location + "</em>";
+            
             
             infowindow.open(map);
             infowindow.setPosition(position);
 
         });
+    }
+
+    socket.on("tweet", function (tweet) {
+
+        console.log("Tweet tweet");
+        
+        if (tweet.geo) {
+            plotTweet(tweet);
+        } else if (tweet.user.location) {
+
+            geocoder.geocode({'address': tweet.user.location}, function(results, status) {
+                
+                if (status === "OK") {
+                    tweet.geo = {};
+                    tweet.geo.coordinates = [results[0].geometry.location.Oa, results[0].geometry.location.Pa];
+                    plotTweet(tweet);
+                }
+            });
+
+        }
 
     });
 
