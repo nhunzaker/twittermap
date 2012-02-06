@@ -22,7 +22,7 @@ twitter.stream('statuses/filter', {
         App.volley("tweet", tweet);
         
         try {
-            //  Tweet.save(tweet, function(err, doc) {});
+            Tweet.save(tweet, function(err, doc) {});
         } catch(x) {
             // do nothing
         }
