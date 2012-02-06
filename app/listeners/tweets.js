@@ -18,7 +18,11 @@ var ntwitter  = require("ntwitter"),
 //  track      : "superbowl"
 // -------------------------------------------------- //
 
-twitter.stream('statuses/sample', function(stream) {
+twitter.stream('statuses/filter', {
+
+    locations  : '-180,0, 180,90'
+
+}, function(stream) {
 
     stream.on('data', function (tweet) {
 
@@ -29,9 +33,11 @@ twitter.stream('statuses/sample', function(stream) {
         // A new Tweet!
         
         if (tweet.geo) {
-            return App.volley("tweet", tweet);
-        } else if (tweet.user.location) {
-            
+            App.volley("tweet", tweet);
+        } 
+
+        /* Disabled until a better solution comes along, we don't want to upset Googles
+        if (tweet.user.location) {
             tweet.geo = {};
             
             // Use the google maps geocoder API to get the 
@@ -45,8 +51,10 @@ twitter.stream('statuses/sample', function(stream) {
                 tweet.geo.coordinates = [geo.lat, geo.lng];
                 
                 App.volley("tweet", tweet);
+
             });
         }
+         */
 
     }); 
 
