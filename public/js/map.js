@@ -83,9 +83,9 @@ $(function() {
             infowindow.setPosition(position);
 
         });
-
-
+        
         TWEETS.push(tweet);
+
     }
 
     socket.on("tweet", function (data) {
