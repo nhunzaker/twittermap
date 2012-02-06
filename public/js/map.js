@@ -96,10 +96,7 @@ $(function() {
                 }
             });
 
-        } else {
-            console.log(tweet);
         }
-
     }
 
     socket.on("tweet", function (data) {
