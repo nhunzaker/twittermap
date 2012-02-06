@@ -21,15 +21,15 @@ twitter.stream('statuses/filter', {
         tweet.sentiment = sentiment.analyze(tweet.text);
         tweet.type = "tweet";
         tweets.push(tweet);
-
+        
         // For performance sake, let's only write to the database
         // on every 100 tweets
         // -------------------------------------------------- //
 
         if (tweets.length >= 100) {
-            App.db.save(tweets, function() {
+            //App.db.save(tweets, function() {
                 // do nothing
-            });
+            //});
 
             tweets = [];
         }
