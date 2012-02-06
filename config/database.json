@@ -10,20 +10,9 @@
     "auth"         : {
       "username"   : "nhunzaker",
       "password"   : "f0rtress"
-    }
+    },
 
-  },
+    "changes"      : "false"
 
-  "production" : {
-
-    "adapter"      : "[couch]",
-    "host"         : "[the-host]",
-    "dbname"       : "[the-dbname]",
-    "port"         : "[the-port]",
-
-    "auth"         : {
-      "username" : "[username]",
-      "password" : "[password]"
-    }
   }
 }
