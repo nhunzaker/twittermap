@@ -9,7 +9,7 @@ var ntwitter  = require("ntwitter"),
 // -------------------------------------------------- //
 
 twitter.stream('statuses/filter', { 
-    //    locations  : '-150,0, -60,90'
+    //locations  : '-150,0, -60,90'
     track: "superbowl"
 
 }, function(stream) {
@@ -22,7 +22,7 @@ twitter.stream('statuses/filter', {
         App.volley("tweet", tweet);
         
         try {
-            Tweet.save(tweet, function(err, doc) {});
+            //  Tweet.save(tweet, function(err, doc) {});
         } catch(x) {
             // do nothing
         }
