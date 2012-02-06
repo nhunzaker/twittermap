@@ -51,7 +51,7 @@ $(function() {
 
         var pos   = tweet.sentiment.positive.score,
             neg   = tweet.sentiment.negative.score,
-            color = "rgb(" + (50 + (neg * 70)) + "," + (50 + (pos * 50)) + ", 50)";
+            color = (pos - neg !== 0) ? "rgb(" + (50 + (neg * 70)) + "," + (50 + (pos * 50)) + ", 50)" : "rgb(50,50,100)" ;
 
         var position = new google.maps.LatLng( tweet.geo.coordinates[0], tweet.geo.coordinates[1]);
         
