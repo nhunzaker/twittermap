@@ -1,6 +1,8 @@
 # Twittermap
 
-1. Setup your twitter dev account settings and couchdb settings in `./config`
+1. Setup your twitter dev account settings and couchdb settings in `./config` as:
+  - `twitter_key.json`
+  - `database.json`
 2. Do the following:
 
 ```
