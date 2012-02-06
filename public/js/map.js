@@ -2,6 +2,10 @@
 
 $(function() {
     
+    // Some globals for debugging
+    // -------------------------------------------------- //
+
+    TWEETS = [];
 
     //-- Map styles ----------------------------------------------------------------//
 
@@ -38,7 +42,7 @@ $(function() {
     
 
     //-- Initialize ---------------------------------------------------------------//
-   
+    
     var connect = window.location.protocol + "//" + window.location.hostname,
         socket  = io.connect(connect),
         geocoder = new google.maps.Geocoder();
@@ -79,35 +83,21 @@ $(function() {
             infowindow.setPosition(position);
 
         });
-    }
 
-    function clearingHouse(tweet) {
-        
-        if (tweet.geo) {
-            plotTweet(tweet);
-        } else if (tweet.user.location) {
 
-            geocoder.geocode({'address': tweet.user.location}, function(results, status) {
-                
-                if (status === "OK") {
-                    tweet.geo = {};
-                    tweet.geo.coordinates = [results[0].geometry.location.Oa, results[0].geometry.location.Pa];
-                    plotTweet(tweet);
-                }
-            });
-
-        }
+        TWEETS.push(tweet);
     }
 
     socket.on("tweet", function (data) {
         
         if ($.isArray(data)) {
-            console.log("got data");
+
             $.each(data, function() {
-                clearingHouse(this);
+                plotTweet(this);
             });
+            
         } else {
-            clearingHouse(data);
+            plotTweet(data);
         }
 
     });
