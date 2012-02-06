@@ -18,3 +18,9 @@ node server
 
 - Twitter authentication to display a geographic representation of a user's network
 - Better resizing of markers
+
+
+# Credit where it's due:
+
+The sentiment analysis for this map would be impossible without the exception work found at:
+http://www.cs.uic.edu/~liub/FBS/sentiment-analysis.html
