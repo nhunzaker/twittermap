@@ -1,0 +1,18 @@
+{
+
+  "development" : {
+
+    "adapter"      : "couch",
+    "host"         : "nhunzaker.iriscouch.com",
+    "dbname"       : "twittermap",
+    "port"         : "80",
+
+    "auth"         : {
+      "username"   : "nhunzaker",
+      "password"   : "f0rtress"
+    },
+
+    "changes"      : "false"
+
+  }
+}
