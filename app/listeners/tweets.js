@@ -44,7 +44,7 @@ twitter.stream('statuses/sample', function(stream) {
                 
                 tweet.geo.coordinates = [geo.lat, geo.lng];
                 
-                return App.volley("tweet", tweet);
+                App.volley("tweet", tweet);
             });
         }
 
