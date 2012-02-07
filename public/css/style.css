@@ -25,14 +25,10 @@ a {
 
 a.info {
     color: #aaa;
-    background: #222;
-    border-radius: 50px;
     margin-left: 10px;
-    padding: 0 8px;
-}
-
-a.info:hover {
-    background: #333;
+    position: absolute;
+    top: 0px;
+    right: 20px;
 }
 
 a.twitterauth {
