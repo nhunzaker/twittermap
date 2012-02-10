@@ -1,5 +1,4 @@
 // Twitter Map
-
 $(function() {
     
     // Some globals for debugging
