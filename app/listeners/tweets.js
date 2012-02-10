@@ -4,9 +4,8 @@
 var ntwitter  = require("ntwitter"),
     geocoder  = require("geocoder"),
     sentiment = require("speakeasy-nlp").sentiment,
-    twitter   = new ntwitter(App.twitter_key)
+    twitter   = new ntwitter({"consumer_key": "6GwherBXMOW9cIywQUThw","consumer_secret": "LDJHVYJvetYxhy9PCkad7HiqD4FPSrncksILwcAzVQ","access_token_key" : "30547882-m1Hq3bf2gCiALWSqD24zYc63mHSzjwYo9uQIgz3nF","access_token_secret" : "l8LI7ib6q2f3jLwMewNtPtm8vHFbVOLYNFQJS2eSU","callback_url": "http://www.fail.com/"})
 ;
-
 
 // Stream!
 // 
@@ -31,7 +30,7 @@ var ntwitter  = require("ntwitter"),
         });
         
         stream.on('data', function (tweet) {
-
+            
             tweet.sentiment = sentiment.analyze(tweet.text);
             tweet.type = "tweet";
             
