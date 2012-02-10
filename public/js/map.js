@@ -88,7 +88,9 @@ $(function() {
     }
 
     socket.on("tweet", function (data) {
+
         if ($.isArray(data)) {
+
             $.each(data, function() {
                 plotTweet(this);
             });
@@ -96,6 +98,7 @@ $(function() {
         } else {
             plotTweet(data);
         }
+
     });
 
 });

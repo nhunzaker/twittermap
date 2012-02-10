@@ -30,7 +30,7 @@ var ntwitter  = require("ntwitter"),
         });
         
         stream.on('data', function (tweet) {
-
+            
             tweet.sentiment = sentiment.analyze(tweet.text);
             tweet.type = "tweet";
             
