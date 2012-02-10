@@ -5,9 +5,8 @@
 
         <title>Twitter Map</title>
 
-        <link rel="stylesheet" href="/css/style.css" />
-        
-        <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=true"></script>
+        <link rel="stylesheet" href="/css/style.css" />        <link rel="stylesheet" href="/leaf/leaflet.css" />
+        <!--[if lte IE 8]><link rel="stylesheet" href="/leaf/leaflet.ie.css" /><![endif]-->
 
         <script src="/socket.io/socket.io.js"></script>
         <script src="/js/jquery.js"></script>
@@ -24,20 +23,14 @@
         
         <%- partial("./about.ejs") %>
 
+        <!--
+        We should support both google maps as well as Leaflet.
         <script src="/js/map.js"></script>
-        <script type="text/javascript">
+        Maybe try to make an api on top of the two similar parts?
+        -->
 
-            var _gaq = _gaq || [];
-            _gaq.push(['_setAccount', 'UA-19230428-3']);
-            _gaq.push(['_trackPageview']);
-
-            (function() {
-            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-            })();
-
-        </script>
+        <script src="/leaf/leaflet.js"></script>
+        <script src="/js/leafletMap.js"></script>
 
     </body>
 </html>
