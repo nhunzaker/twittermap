@@ -90,8 +90,6 @@ $(function() {
 
     socket.on("tweet", function (data) {
 
-        console.log("tweet");
-
         if ($.isArray(data)) {
 
             $.each(data, function() {

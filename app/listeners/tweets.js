@@ -18,44 +18,31 @@ var ntwitter  = require("ntwitter"),
 //  track      : "superbowl"
 // -------------------------------------------------- //
 
-twitter.stream('statuses/filter', {
+(function stream() {
 
-    locations  : '-180,0, 180,90'
+    twitter.stream('statuses/filter', {
+        locations  : ['-180,0', '180,90']
+    }, function(stream) {
 
-}, function(stream) {
-
-    stream.on('data', function (tweet) {
-
-        tweet.sentiment = sentiment.analyze(tweet.text);
-        tweet.type = "tweet";
+        stream.on("end", function() {
+            setTimeout(function() {
+                stream();
+            }, 10000);
+        });
         
-        // Okay cool, return an event emitter that says we have
-        // A new Tweet!
-        
-        if (tweet.geo) {
-            App.volley("tweet", tweet);
-        } 
+        stream.on('data', function (tweet) {
 
-        /* Disabled until a better solution comes along, we don't want to upset Googles
-        if (tweet.user.location) {
-            tweet.geo = {};
+            tweet.sentiment = sentiment.analyze(tweet.text);
+            tweet.type = "tweet";
             
-            // Use the google maps geocoder API to get the 
-            // user's location
-            geocoder.geocode(tweet.user.location, function ( err, data ) {
-
-                if (err || data.status !== "OK") return false;
-                
-                var geo = data.results[0].geometry.location;
-                
-                tweet.geo.coordinates = [geo.lat, geo.lng];
-                
+            // Okay cool, return an event emitter that says we have
+            // A new Tweet!
+            
+            if (tweet.geo) {
                 App.volley("tweet", tweet);
+            } 
+        }); 
 
-            });
-        }
-         */
+    });
 
-    }); 
-
-});
+}).call(null);
