@@ -46,8 +46,9 @@ $(function() {
 
         var circleLocation = new L.LatLng(o.geo.coordinates[0], o.geo.coordinates[1]),
             circleOptions = { 
-                color        : color, 
-                weight       : 2
+                color       : color, 
+                weight      : 1,
+                fillOpacity : 0.6
             };
 
         var circle = new L.Circle(circleLocation, 12000, circleOptions);

@@ -4,7 +4,7 @@
   "engines": {
     "node": "v0.6.x"
   },
-  "version": "0.3.0-2",
+  "version": "0.3.0-3",
   "private": true,
   "dependencies": {
     "union": "0.1.7",
