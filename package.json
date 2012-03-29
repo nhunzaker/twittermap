@@ -1,16 +1,27 @@
 {
-  "name": "Twittermap",
-  "author": "Nate Hunzaker <nate.hunzaker@gmail.com>",
-  "version": "0.2.0-21",
-  "scripts": {
-    "start": "server.js"
-  },
+  "name"            : "Twittermap",
+  "description"     : "Maps tweets with sentiment",
+
+  "version"         : "0.0.0",
+  "private"         : true,
+
   "dependencies": {
-    "telegraph": "0.8.22",
-    "ntwitter": "0.2.10",
-    "speakeasy-nlp": "0.1.42",
-    "oauth": "0.9.x",
-    "geocoder": "0.1.x"
+    "union"         : "0.1.7",
+    "flatiron"      : "0.1.11",
+    "socket.io"     : "*",
+    "connect"       : "*",
+    "ntwitter"      : "*",
+    "speakeasy-nlp" : "*",
+    "request"       : "*"
   },
-  "subdomain": "twittermap"
+
+  "devDependencies": {
+    "api-easy"     : "0.3.2",
+    "vows"         : "0.6.1"
+  },
+
+  "scripts"        : {
+    "test"         : "vows --spec",
+    "start"        : "node app.js"
+  }
 }

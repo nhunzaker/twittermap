@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+
+        <title>Twitter Map</title>
+
+        <link rel="stylesheet" href="/css/style.css" />        
+        <link rel="stylesheet" href="/leaf/leaflet.css" />
+        
+        <!--[if lte IE 8]><link rel="stylesheet" href="/leaf/leaflet.ie.css" /><![endif]-->
+
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="/js/jquery.js"></script>
+        
+    </head>
+    
+    <body>
+        
+        <header>
+            Twitter Map <a class="info" href="#about">i</a>
+        </header>
+
+        <div id="map"></div>
+
+        
+        <div id="about">
+            <a class="close" href="#">&times;</a>
+            <h2>Twittermap</h2>
+            <p><small> by <a href="https://github.com/nhunzaker" target="_blank">Nate Hunzaker</a></small></p>
+            <hr/>
+            <p>
+                Twittermap measures sentiment for tweets around the world. It is an implementation of some exceptional research on sentiment analysis found <a href="http://www.cs.uic.edu/~liub/FBS/sentiment-analysis.html" target="_blank">here</a>.
+            </p>
+        </div>
+
+        <!--
+        We should support both google maps as well as Leaflet.
+        <script src="/js/map.js"></script>
+        Maybe try to make an api on top of the two similar parts?
+        -->
+
+        <script src="/leaf/leaflet.js"></script>
+        <script src="/js/leafletMap.js"></script>
+
+    </body>
+</html>
