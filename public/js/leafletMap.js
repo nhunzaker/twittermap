@@ -50,7 +50,7 @@ $(function() {
                 weight       : 2
             };
 
-        var circle = new L.Circle(circleLocation, 4500, circleOptions);
+        var circle = new L.Circle(circleLocation, 12000, circleOptions);
 
         circle.on('click', function(e) {
 
