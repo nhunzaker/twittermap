@@ -1,10 +1,8 @@
 $(function() {
 
-    var url = 'http://{s}.tile.cloudmade.com/3a83164a47874169be4cabc2e8b8c449/58242/256/{z}/{x}/{y}.png',
+    var url = 'http://{s}.tile.cloudmade.com/3a83164a47874169be4cabc2e8b8c449/58458/256/{z}/{x}/{y}.png',
         attribution = '',
-        cloudmade = new L.TileLayer( url, { maxZoom : 14, attribution : attribution }),
-        connect = window.location.protocol + "//" + window.location.hostname,
-        socket  = io.connect(connect);
+        cloudmade = new L.TileLayer( url, { maxZoom : 17, attribution : attribution });
 
 
     // Adjust height
@@ -31,41 +29,96 @@ $(function() {
 
     // Tweet Management
     // -------------------------------------------------- //
-    
+
+    window.plotUser = function(o, root, color) {
+
+        if (!o.location) return false;
+
+        // User Marker
+        // -------------------------------------------------- //
+
+        var circleLocation = new L.LatLng(o.location[0], o.location[1]),
+            locationMarker = new L.Circle(circleLocation, 5000, { 
+            color       : "rgb(255,255,255)", 
+            weight      : 1,
+            fillOpacity : 0.6
+        });
+        
+        locationMarker.on('click', function(e) {
+
+            var popupContent = "<p>" + o.screen_name + " | " + o.location.join(", ") + "</p>",
+                popup = new L.Popup();
+
+            popup.setLatLng(circleLocation);
+            popup.setContent(popupContent);
+            map.openPopup(popup);
+        });
+        
+        map.addLayer(locationMarker);
+
+        // Add connector
+        // -------------------------------------------------- //
+        
+        map.addLayer(new L.Polyline([circleLocation, root], {
+            color: color || '#aaf',
+            weight: 2,
+            opacity: 0.2
+        }));
+
+
+        // Pin
+        // -------------------------------------------------- //
+
+        map.addLayer(new L.Circle(root, 5000, { 
+            color       : "#333",
+            weight      : 1,
+            fillOpacity : 0.6
+        }));
+
+    };
+
     window.plotTweet = function(o) {
 
         var pos   = o.sentiment.positive.score,
             neg   = o.sentiment.negative.score,
+            opacity = 0.9,
             color;
 
         if (pos - neg !== 0){
             color = "rgb(" + (50 + (neg * 70)) + "," + (50 + (pos * 50)) + ", 50)";
         } else {
             color = "rgb(50,50,100)";
+            opacity = 0.3;
         }
 
-        var circleLocation = new L.LatLng(o.geo.coordinates[0], o.geo.coordinates[1]),
+        // Add the tweet
+        var circleLocation = new L.LatLng(o.location[0], o.location[1]),
             circleOptions = { 
                 color       : color, 
                 weight      : 1,
-                fillOpacity : 0.6
+                fillOpacity : opacity
             };
 
-        var circle = new L.Circle(circleLocation, 12000, circleOptions);
-
+        var circle = new L.Circle(circleLocation, 15000, circleOptions);
+        
         circle.on('click', function(e) {
 
-            var popupContent = "<img class='profile' src='" + o.user.profile_image_url + "'/>"
-                    + "<p>" + o.text + "</p>"
-                    + "<em>-" + o.user.name + " | " + o.user.location + "</em>",
+            var popupContent = "<p>" + o.tweet + "</p>"
+                    + "<em>-" + o.username + " | " + o.location.join(", ") + "</em>",
                 popup = new L.Popup();
-            popup.setLatLng(e.latlng);
+            popup.setLatLng(circleLocation);
             popup.setContent(popupContent);
             map.openPopup(popup);
 
         });
 
+        // Add Tweet Marker
         map.addLayer(circle);
+
+        // Add the network
+        $.each(o.network, function() {
+            plotUser(this, circleLocation, color);
+        });
         
     };
 
@@ -73,8 +126,16 @@ $(function() {
     // Web Sockets
     // -------------------------------------------------- //
 
+    var connect = window.location.protocol + "//" + window.location.hostname,  
+        socket  = io.connect(connect);    
+
+    $.getJSON("/flocks", function(data) {
+        $.each(data, function() {
+            plotTweet(this);
+        });
+    });
+
     socket.on("tweet", function (data) {
-        data = $.isArray(data) ? data : [data];
         $.each(data, function() {
             plotTweet(this);
         });

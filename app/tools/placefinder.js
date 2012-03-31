@@ -1,5 +1,5 @@
 var request = require('request'),
-    yahoo   = require("../config/yahoo_key.json"),
+    yahoo   = require(__dirname + "/../../config/yahoo_key.json"),
     qs      = require('querystring');
 
 function placefinder(string, callback) {
@@ -12,12 +12,23 @@ function placefinder(string, callback) {
         });
 
     request.get(base + data, function(err, res, body) {
+        
+        if (err) return callback(err);
+
+        var data, error;
+        
         try {
-            var data = JSON.parse(body);
-            callback(undefined, data.ResultSet);
+            data = JSON.parse(body);
         } catch(x) {
-            callback(true);
+            error = x;
         }
+        
+        if (error) {
+            callback(error);
+        } else {
+            callback(false, data);
+        }
+
     });
     
 };

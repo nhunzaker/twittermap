@@ -1,5 +1,6 @@
 var request = require('request'),
-    qs      = require('querystring');
+    qs      = require('querystring'),
+    async   = require("async");
 
 function isArray(obj) {
     return Object.prototype.toString.call(obj) === "[object Array]";
@@ -10,17 +11,26 @@ function networker(users, callback) {
     users = isArray(users)? users : [users];
 
     var base = "http://api.twitter.com/1/users/lookup.json?",
-        data = qs.stringify({ 
-            screen_name : users.join(",")
-        });
+        data = "screen_name=" + users.join(",");
+    
+    request.post(base + data, function(err, res, body) {
+        
+        if (err) return callback(err);
 
-    request.get(base + data, function(err, res, body) {
+        var data, error;
+        
         try {
-            var data = JSON.parse(body);
-            callback(undefined, data);
+            data = JSON.parse(body);
         } catch(x) {
-            callback(true);
+            error = x;
         }
+        
+        if (error) {
+            callback(error);
+        } else {
+            callback(false, data);
+        }
+
     });
     
 };
