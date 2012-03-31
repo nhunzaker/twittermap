@@ -22,7 +22,8 @@ var app         = require('flatiron').app,
 //   
 // -------------------------------------------------- //
 
-var count = 0;
+var count  = 0,
+    flocks = [];
 
 function stream() {
 
@@ -66,17 +67,20 @@ function stream() {
 
                 }, function(err, flock) {
 
+                    if (err) return console.log("Ooops", err);
+
                     flock.save(function (err) {
+                        
+                        if (err) return console.log("Ooops", err);
 
-                        if (err) console.log("Ooops", err);
+                        flocks.push(flock);
 
-                        if (count === 50) {
+                        if (flocks.length === 50) {
                             console.log("Sending batch");
-                            builder();
-                            count = 0;
+                            builder(flocks);
+                            flocks = [];
                         } else {         
-                            console.log("Saved a candidate");
-                            count++;
+                            console.log("Saved a candidate, %s", flocks.length);
                         }
 
                     });

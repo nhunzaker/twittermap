@@ -38,11 +38,13 @@ $(function() {
         // -------------------------------------------------- //
 
         var circleLocation = new L.LatLng(o.location[0], o.location[1]),
-            locationMarker = new L.Circle(circleLocation, 5000, { 
+            locationMarker = new L.CircleMarker(circleLocation, { 
             color       : "rgb(255,255,255)", 
             weight      : 1,
             fillOpacity : 0.6
         });
+
+        locationMarker.setRadius(3);
         
         locationMarker.on('click', function(e) {
 
@@ -65,16 +67,6 @@ $(function() {
             opacity: 0.2
         }));
 
-
-        // Pin
-        // -------------------------------------------------- //
-
-        map.addLayer(new L.Circle(root, 5000, { 
-            color       : "#333",
-            weight      : 1,
-            fillOpacity : 0.6
-        }));
-
     };
 
     window.plotTweet = function(o) {
@@ -92,20 +84,22 @@ $(function() {
         }
 
         // Add the tweet
-        var circleLocation = new L.LatLng(o.location[0], o.location[1]),
+        var circleLocation = new L.LatLng(o.coordinates[0], o.coordinates[1]),
             circleOptions = { 
                 color       : color, 
                 weight      : 1,
                 fillOpacity : opacity
             };
 
-        var circle = new L.Circle(circleLocation, 15000, circleOptions);
+        var circle = new L.CircleMarker(circleLocation, circleOptions);
+        circle.setRadius(6);
         
         circle.on('click', function(e) {
 
             var popupContent = "<p>" + o.tweet + "</p>"
-                    + "<em>-" + o.username + " | " + o.location.join(", ") + "</em>",
+                    + "<em>-" + o.username + " | " + o.location + "</em>",
                 popup = new L.Popup();
+
             popup.setLatLng(circleLocation);
             popup.setContent(popupContent);
             map.openPopup(popup);

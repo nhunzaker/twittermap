@@ -4,7 +4,7 @@
   "engines": {
     "node": "v0.6.x"
   },
-  "version": "0.3.0-4",
+  "version": "0.3.0-6",
   "private": true,
   "dependencies": {
     "union": "0.1.7",
@@ -13,7 +13,8 @@
     "connect": "*",
     "ntwitter": "*",
     "speakeasy-nlp": "*",
-    "request": "*"
+    "request": "*",
+    "resourceful": "*"
   },
   "devDependencies": {
     "api-easy": "0.3.2",
