@@ -2,7 +2,7 @@
 
 For this to work, you will need to harvest data. You can do this by uncommenting the "harvest" requiring line in `app.js`.
 
-1. Setup your twitter dev account settings and couchdb settings in `./config` (Follow sample fields):
+1. Setup your twitter dev, yahoo dev, and couchdb settings in `./config` (Follow sample fields):
 2. Do the following:
 
 ```
