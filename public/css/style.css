@@ -122,3 +122,13 @@ img.profile {
     color: #f33;
     text-shadow: 0 0 10px rgba(255,100,0,0.75);
 }
+
+
+.loading {
+  background: rgba(0,0,0,0.4) url("/images/loader.gif") 50% 50% no-repeat;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}

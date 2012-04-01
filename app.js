@@ -18,7 +18,6 @@ require("./app/routes");
 
 // Harvester
 require("./app/resources/flock");
-require("./app/resources/users");
 //require("./app/tools/harvester");
 
 // Start the server, then install socket.io

@@ -17,7 +17,7 @@ app.router.get("/flocks", function() {
         self.res.writeHead(200, { 
             "Content-Type" : "application/json" 
         });
-        self.res.end(JSON.stringify(flocks));
+        self.res.end(JSON.stringify(flocks.slice(0, 1000)));
     });
 
 });
