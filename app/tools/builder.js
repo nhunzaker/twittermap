@@ -1,5 +1,4 @@
-var _      = require("async"),
-    net    = require("./networker"),
+var net    = require("./networker"),
     stitch = require("./stitch");
 
 function builder(flocks, size) {
