@@ -2,6 +2,10 @@
 
 For this to work, you will need to harvest data. You can do this by uncommenting the "harvest" requiring line in `app.js`.
 
+``` javascript
+//require("./app/tools/harvester");   // <=# Needs to be uncommented
+```
+
 1. Setup your twitter dev, yahoo dev, and couchdb settings in `./config` (Follow sample fields):
 2. Do the following:
 
