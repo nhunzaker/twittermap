@@ -1,13 +1,13 @@
 # Twittermap
 
-1. Setup your twitter dev account settings and couchdb settings in `./config` as:
-  - `twitter_key.json`
-  - `database.json`
+For this to work, you will need to harvest data. You can do this by uncommenting the "harvest" requiring line in `app.js`.
+
+1. Setup your twitter dev account settings and couchdb settings in `./config` (Follow sample fields):
 2. Do the following:
 
 ```
 npm install -d
-node server
+node app
 ```
 
 ![Twittermap](https://github.com/nhunzaker/twittermap/raw/master/public/images/sample.png)
