@@ -32,7 +32,7 @@ function stream() {
     }, function(stream) {
 
         // On disconnect, reconnect the stream after 31 seconds
-        stream.on("____end", function() {
+        stream.on("end", function() {
             console.log("Stream ended");
             setTimeout(function() {
                 stream();
